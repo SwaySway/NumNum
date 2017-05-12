@@ -58,13 +58,7 @@ public class NumActivity extends AppCompatActivity {
         reset = (Button) findViewById(R.id.reset);
         title = (TextView) findViewById(R.id.title_top);
         title.setText("Find the next highest integer!");
-        timerHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-                onStart(null);
-            }
-        }, 200);
+        check.setEnabled(false);
     }
 
     Handler timerHandler = new Handler();
@@ -79,7 +73,8 @@ public class NumActivity extends AppCompatActivity {
     Runnable next_game = new Runnable() {
         @Override
         public void run() {
-            onStart();
+            generateNum();
+            title.setText(String.valueOf(number));
             reenable();
         }
     };
@@ -123,6 +118,7 @@ public class NumActivity extends AppCompatActivity {
 
     public void click(View v){
         String str = eText.getText().toString();
+        eText.getText().clear();
         check.setEnabled(false);
         reset.setEnabled(false);
         if(str.compareTo(perm.get(0)) == 0 && perm.size() > 1){
