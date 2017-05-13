@@ -27,7 +27,7 @@ public class NumActivity extends AppCompatActivity {
     private String number;
     private int playerScore;
     private ArrayList<String> perm = new ArrayList<>();
-    private CountDownTimer cntdwn = new CountDownTimer(120000, 1000) {
+    private CountDownTimer cntdwn = new CountDownTimer(60000, 1000) {
         @Override
         public void onTick(long millisUntilFinished) {
             time.setText("Time: " + millisUntilFinished / 1000);
@@ -58,6 +58,7 @@ public class NumActivity extends AppCompatActivity {
         reset = (Button) findViewById(R.id.reset);
         title = (TextView) findViewById(R.id.title_top);
         title.setText("Find the next highest integer!");
+        title.setTextSize(18);
         check.setEnabled(false);
     }
 
@@ -83,6 +84,7 @@ public class NumActivity extends AppCompatActivity {
         cntdwn.start();
         generateNum();
         title.setText(String.valueOf(number));
+        title.setTextSize(50);
         return true;
     }
 
@@ -129,6 +131,7 @@ public class NumActivity extends AppCompatActivity {
         else if(str.compareTo(perm.get(0)) == 0 && perm.size() == 1){
             playerScore += 10;
             title.setText("Next Number...");
+            title.setTextSize(18);
             timerHandler.postDelayed(next_game, 1000);
         }else{
             cntdwn.cancel();
@@ -138,6 +141,7 @@ public class NumActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     title.setText("Your score: "+ playerScore);
+                    title.setTextSize(30);
                     reset.setEnabled(true);
                 }
             }, 2000);
