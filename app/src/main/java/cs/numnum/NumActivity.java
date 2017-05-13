@@ -62,6 +62,7 @@ public class NumActivity extends AppCompatActivity {
         title.setText("Find the next highest integer!");
         title.setTextSize(18);
         check.setEnabled(false);
+        eText.setFocusable(false);
     }
 
     Handler timerHandler = new Handler();
@@ -142,7 +143,10 @@ public class NumActivity extends AppCompatActivity {
         }else{
             cntdwn.cancel();
             time.setText("Time: 00");
-            title.setText("End!");
+            //title.setText("End!");
+            eText.setFocusable(false);
+            eText.setTextSize(18);
+            eText.setText("Game Over - Correct Answer: "+perm.get(0));
             timerHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -150,13 +154,15 @@ public class NumActivity extends AppCompatActivity {
                     title.setTextSize(30);
                     reset.setEnabled(true);
                 }
-            }, 2000);
+            }, 5000);
 
 
         }
     }
 
     public void reset (View v){
+        eText.setTextSize(70);
+        eText.setFocusableInTouchMode(true);
         eText.getText().clear();
         cntdwn.cancel();
         reenable();
