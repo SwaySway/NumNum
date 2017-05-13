@@ -26,6 +26,7 @@ public class NumActivity extends AppCompatActivity {
     private TextView time;
     private String number;
     private int playerScore;
+    private boolean start = true;
     private ArrayList<String> perm = new ArrayList<>();
     private CountDownTimer cntdwn = new CountDownTimer(60000, 1000) {
         @Override
@@ -42,6 +43,7 @@ public class NumActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     title.setText("Your Score: "+playerScore);
+                    title.setTextSize(30);
                 }
             }, 2000);
         }
@@ -76,6 +78,7 @@ public class NumActivity extends AppCompatActivity {
         public void run() {
             generateNum();
             title.setText(String.valueOf(number));
+            title.setTextSize(50);
             reenable();
         }
     };
@@ -95,6 +98,9 @@ public class NumActivity extends AppCompatActivity {
         permutation("", number);
         Collections.sort(perm);
         perm.subList(0, perm.indexOf(number)+1).clear();
+        if(perm.isEmpty()){
+            generateNum();
+        }
     }
 
     private void permutation(String prefix, String str){
@@ -151,10 +157,15 @@ public class NumActivity extends AppCompatActivity {
     }
 
     public void reset (View v){
+        eText.getText().clear();
         cntdwn.cancel();
         reenable();
         playerScore = 0;
         onStart(null);
+        if(start){
+            start = false;
+            reset.setText("Reset");
+        }
     }
 
 }

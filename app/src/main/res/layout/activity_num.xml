@@ -88,17 +88,18 @@
 
     <Button
         android:id="@+id/reset"
-        android:layout_width="0dp"
-        android:layout_height="54dp"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
         android:layout_marginBottom="8dp"
         android:layout_marginRight="0dp"
-        android:layout_marginTop="16dp"
-        android:drawableTop="@drawable/reset"
+        android:layout_marginTop="8dp"
+        android:elevation="1dp"
         android:onClick="reset"
+        android:text="Start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="@+id/editText"
         app:layout_constraintTop_toBottomOf="@+id/editText"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="HardcodedText,RtlHardcoded" />
+        app:layout_constraintVertical_bias="0.039"
+        tools:layout_editor_absoluteX="262dp" />
 
 </android.support.constraint.ConstraintLayout>
