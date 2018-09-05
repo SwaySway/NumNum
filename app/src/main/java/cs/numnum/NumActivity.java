@@ -15,7 +15,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-
+/**
+ * @author josue
+ * Created dev branch
+ */
 public class NumActivity extends AppCompatActivity {
 
 
